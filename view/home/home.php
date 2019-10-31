@@ -12,4 +12,4 @@ echo "Hello :)";
 	</li>
 </ul>
 
-    <img src="<?php echo __DIR__."/../../img/identite.jpg";?>">
+    <img src="<?php echo __DIR__;?>/img/identite.jpg">

@@ -1,6 +1,6 @@
 version: "3.6"
 services:
-    co_web: #
+    co_web:
       build: . #chemin d'accès vers Dockerfile
       volumes:
         - .:/var/www/html
