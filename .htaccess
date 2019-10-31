@@ -1,0 +1,13 @@
+RewriteEngine On #active le module rewrite d'apache
+
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_FILENAME} !-d
+
+#RewriteCond %{REQUEST_URI} !^/(img/.*)$
+
+#RewriteCond %{REQUEST_URI} "/img/"
+
+
+
+RewriteRule . index.php [L] #L fin de condition, on ne passe pas au suivant
+

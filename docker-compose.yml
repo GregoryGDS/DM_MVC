@@ -1,0 +1,29 @@
+version: "3.6"
+services:
+    co_web:
+      build: . #chemin d'accès vers Dockerfile
+      volumes:
+        - .:/var/www/html
+      ports:
+        - 2012:80
+      #depend_on:
+        #- mariadb
+
+    mariadb:
+      image: mariadb
+      container_name: maria_mvc_DM
+      environment:
+        - MYSQL_ROOT_PASSWORD=root
+        - MYSQL_DATABASE=bdd_mvc_DM
+      volumes:
+        - ./export:/docker-entrypoint-initdb.d
+
+    pma:
+      image: phpmyadmin/phpmyadmin
+      container_name: pma_mvc_DM
+      environment:
+        - PMA_HOST=mariadb
+      ports:
+        - 1012:80
+      depends_on: 
+        - mariadb 
