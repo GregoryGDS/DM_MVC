@@ -6,13 +6,13 @@ if (isset($_POST['user'])&&isset($_POST['password'])){
 
 	if(!empty($_POST['user'])&&!empty($_POST['password'])){	
 
-		require_once(__DIR__.'/../../model/users/users.php');
+		require_once(__DIR__.'/../../model/users/modelUsers.php');
 		$current_user=control_connexion($_POST['user']);
-		//print_r($current_user);
+		print_r($current_user);
 		//print_r(allUsers());
 		if (!empty($current_user)){
 
-			if (password_verify($_POST['password'],$current_user[0]['password'])){
+			if (password_verify($_POST['password'],$current_user['password'])){
 				$_SESSION['current_user']=$current_user;
 				echo "OK ^^";
 			?>

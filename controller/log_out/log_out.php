@@ -6,12 +6,10 @@ $tableau_action= explode('/', $reTableau);
 
 if (in_array("log_out", $tableau_action)) {
 	session_destroy();
-	//require_once (__DIR__.'/../../index.php');
-	//ouvre formulaire de connexion
 ?>
 <script type="text/javascript">
 	function refresh(){
-		window.location.href = '/a+';
+		window.location.href = '/';
 	};
 	refresh();
 </script>

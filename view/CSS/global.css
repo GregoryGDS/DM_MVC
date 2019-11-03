@@ -1,0 +1,22 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+.position_footer {
+	position: absolute;
+    bottom: 0; 
+    width: 100%;
+}
+
+nav{
+	margin-bottom: 30px;
+}
+
+body{
+	margin-bottom: 150px; /*espace pour insérer le footer en bas de page*/
+}
+
+.cursorDefault{
+	cursor: default;
+}
