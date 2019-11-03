@@ -2,17 +2,19 @@
 
 //echo $_POST['user']."<br>";
 //echo $_POST['password']."<br>";
-if (isset($_POST['user'])&&isset($_POST['password'])){
+$user=htmlspecialchars($_POST['user']);
+$password=htmlspecialchars($_POST['password']);
+if (isset($user)&&isset($password)){
 
-	if(!empty($_POST['user'])&&!empty($_POST['password'])){	
+	if(!empty($user)&&!empty($password)){	
 
 		require_once(__DIR__.'/../../model/users/modelUsers.php');
-		$current_user=control_connexion($_POST['user']);
+		$current_user=control_connexion($user);
 		print_r($current_user);
 		//print_r(allUsers());
 		if (!empty($current_user)){
 
-			if (password_verify($_POST['password'],$current_user['password'])){
+			if (password_verify($password,$current_user['password'])){
 				$_SESSION['current_user']=$current_user;
 				echo "OK ^^";
 			?>

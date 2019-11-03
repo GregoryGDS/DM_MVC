@@ -4,9 +4,9 @@ require_once(__DIR__.'/../../model/posts/modelPosts.php');
 //print_r($_FILES['picture']);
 
 if ($_FILES['picture']['name']!=='') {
-	$title=$_POST['title'];
-	$content=$_POST['content'];
-	$categorie=$_POST['categorie'];
+	$title=htmlspecialchars($_POST['title']);
+	$content=htmlspecialchars($_POST['content']);
+	$categorie=htmlspecialchars($_POST['categorie']);
 	$idUser=$_SESSION['current_user']['id'];
 	$image=uploadImage_path($_FILES['picture']);
 

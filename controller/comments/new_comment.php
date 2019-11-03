@@ -8,10 +8,9 @@ $tableau_action= explode('/', $reTableau);
 //print_r($tableau_action);
 
 if (in_array("new_comment", $tableau_action)) {
-
-	if (isset($_POST['content'])&&!empty($_POST['content'])) {
+	$content=htmlspecialchars($_POST['content']);
+	if (isset($content)&&!empty($content)) {
 		$author=$_SESSION['current_user']['id'];
-		$content=htmlspecialchars($_POST['content']);
 		$post=$_SESSION['post']['id'];
 		//echo $author;
 		//echo $content;

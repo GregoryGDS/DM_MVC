@@ -1,29 +1,33 @@
 <?php
 
 //echo $_POST['user']."<br>";
-//echo $_POST['password']."<br>";
-if (isset($_POST['newUser'])&&isset($_POST['newEmail'])&&isset($_POST['password'])&&isset($_POST['checkpass'])){
+//echo $password."<br>";
+$newUser=htmlspecialchars($_POST['newUser']);
+$newEmail=htmlspecialchars($_POST['newEmail']);
+$password=htmlspecialchars($_POST['password']);
+$checkpass=htmlspecialchars($_POST['checkpass']);
+if (isset($newUser)&&isset($newEmail)&&isset($password)&&isset($checkpass)){
 
-	if(!empty($_POST['newUser'])&&!empty($_POST['newEmail'])&&!empty($_POST['password'])&&!empty($_POST['checkpass'])){	
+	if(!empty($newUser)&&!empty($newEmail)&&!empty($password)&&!empty($checkpass)){	
 		require_once(__DIR__.'/../../model/users/modelUsers.php');
 
-		if(syntaxMail($_POST['newEmail'])){
+		if(syntaxMail($newEmail)){
 			require_once(__DIR__.'/../../model/users/modelUsers.php');
-			$verifUserName=control_connexion($_POST['newUser']);
+			$verifUserName=control_connexion($newUser);
 
 			if (isset($verifUserName)&&empty($verifUserName)) {
-				$verifMail=control_email($_POST['newEmail']);
+				$verifMail=control_email($newEmail);
 				//print_r($verifMail);
 
 				if (empty($verifMail)) {
 
-					if ($_POST['password']===$_POST['checkpass']) {
+					if ($password===$checkpass) {
 						
-						$password_hash= password_hash($_POST['password'], PASSWORD_DEFAULT);
-						sign_in($_POST['newUser'],$_POST['newEmail'],$password_hash);
+						$password_hash= password_hash($password, PASSWORD_DEFAULT);
+						sign_in($newUser,$newEmail,$password_hash);
 						//echo "ok sign in ";
 						//o, se connecte après s'être inscrit
-						$current_user=control_connexion($_POST['newUser']);
+						$current_user=control_connexion($newUser);
 						$_SESSION['current_user']=$current_user;
 						?>
 						<script type="text/javascript">
