@@ -2,12 +2,13 @@
 
 require_once(__DIR__.'/../../model/functionBD.php');
 
-function allUsers(){
+function getUser($id){
 	$co_db=connect();
-	$sql=$co_db->prepare("SELECT * FROM users");
+	$sql=$co_db->prepare("SELECT * FROM users WHERE id=:iduser");
+	$sql->bindValue("iduser","$id",PDO::PARAM_INT);
 	$sql->execute();
-	$allUsers=$sql->fetchAll(PDO::FETCH_ASSOC);
-	return $allUsers;
+	$user=$sql->fetch(PDO::FETCH_ASSOC);
+	return $user;
 }
 
 function control_connexion($name){//username unique dans la BDD
@@ -15,7 +16,7 @@ function control_connexion($name){//username unique dans la BDD
 	$sql=$co_db->prepare("SELECT * FROM users WHERE username=:name");
 	$sql->bindValue("name","$name",PDO::PARAM_STR);
 	$sql->execute();
-	$info_user=$sql->fetchAll(PDO::FETCH_ASSOC);
+	$info_user=$sql->fetch(PDO::FETCH_ASSOC);
 	return $info_user;
 }
 
